@@ -69,6 +69,7 @@ public class HashtagCounterBolt implements IRichBolt {
 	}
 
 	@Override
+	// Not called in cluster mode
 	public void cleanup() {
 		for (Map.Entry<String, Integer> entry : counterMap.entrySet()) {
 			System.out.println("Result: " + entry.getKey() + " : " + entry.getValue());

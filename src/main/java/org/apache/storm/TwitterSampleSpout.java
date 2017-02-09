@@ -91,7 +91,7 @@ public class TwitterSampleSpout extends BaseRichSpout {
          _twitterStream.addListener(listener);
 				
          if (keyWords.length == 0) {
-            _twitterStream.sample();
+            _twitterStream.sample(); //Starts listening on random sample of all public statuses
          }else {
             FilterQuery query = new FilterQuery().track(keyWords);
             _twitterStream.filter(query);
@@ -100,7 +100,7 @@ public class TwitterSampleSpout extends BaseRichSpout {
 			
    @Override
    public void nextTuple() {
-      Status ret = queue.poll();
+      Status ret = queue.poll(); //Retrieves and removes the head of this queue
 				
       if (ret == null) {
          Utils.sleep(50);
